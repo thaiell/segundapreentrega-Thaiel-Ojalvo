@@ -14,9 +14,9 @@ const NavBar = () => {
                 </Link>
                 <nav className="categories">
                     <ul className='categoriesList'>
-                        <NavLink className="navLink" to={"/category/3"}> Uniformes </NavLink>
-                        <NavLink className="navLink" to={"/category/1"}> Verano </NavLink>
-                        <NavLink className="navLink" to={"/category/2"}> Invierno </NavLink>
+                        <NavLink className="navLink" to={"/category/uniforms"}> Uniformes </NavLink>
+                        <NavLink className="navLink" to={"/category/summer"}> Verano </NavLink>
+                        <NavLink className="navLink" to={"/category/winter"}> Invierno </NavLink>
                     </ul>
                 </nav>
                 <CartWidget />

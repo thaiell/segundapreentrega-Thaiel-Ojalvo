@@ -1,13 +1,17 @@
-.categoriesList {
-    padding: 0;
-    margin: 0;
+.navLink {
+    text-decoration: none;
 }
-ul {
-    display: flex;
-    list-style-type:none ;
-    margin: 0px;
-    padding: 0px;
+.navLink {
+    color: black;
+    transition: background-color .3s ease;
+    -webkit-transition: background-color .3s ease;
+    -moz-transition: background-color .3s ease;
+    -ms-transition: background-color .3s ease;
+    -o-transition: background-color .3s ease;
 }
-ul button {
-    margin: 0 5px;
+.navbar {
+    background-color: rgb(48, 228, 48);
+}
+.navLink:hover {
+    background-color: hsl(120, 66%, 54%);
 }

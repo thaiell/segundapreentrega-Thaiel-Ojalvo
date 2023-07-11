@@ -1,9 +1,39 @@
-.cardProduct {
-    text-align: center;
-    border: 1px solid #e3e1e1;
-    margin: 3rem;
-}
-
 img {
     width: 50vw;
+}
+
+.productDetail {
+    margin-top: 70px;
+    gap: 30px;
+}
+
+.detailSection {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+}
+
+ .buttonContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 1rem;
+}
+.buttonContainer .buttonDetail {
+    width: 200px;
+}
+.btn a {
+    color: white;
+    text-decoration: none;
+}
+
+@media (max-width: 768px) {
+    .productDetail {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
 }

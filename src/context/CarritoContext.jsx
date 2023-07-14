@@ -18,33 +18,23 @@ export const CarritoProvider = ({children}) => {
     const [carrito, setCarrito] = useState([]);
     const [total, setTotal] = useState(0);
     const [cantidadTotal, setCantidadTotal] = useState(0);
-
     //No se olviden de esto: verifiquen el carrito por consola. 
-    console.log(carrito);
 
     //5) Agregamos algunos métodos al proveedor de contexto para manipular el carrito de compras: 
 
     //Función agregar al carrito: 
 
-    const agregarProducto = (item, cantidad) => {
+    const agregarProducto = (item, quantity) => {
         const productoExistente = carrito.find(prod => prod.item.id === item.id);
 
         if(!productoExistente) {
-            setCarrito(prev => [...prev, {item, cantidad}]);
+            setCarrito(prev => [...prev, {item, quantity}]);
             //La sintaxis: prev => [...prev, {item, cantidad}] la uso para crear un nuevo array a partir del estado anterior del carrito (prev) y agregar un nuevo objeto que representa el nuevo producto. 
-            setCantidadTotal(prev => prev + cantidad);
-            setTotal(prev => prev + (item.precio * cantidad));
+            setCantidadTotal(prev => prev + 1);
+            setTotal(prev => prev + (item.price * quantity));
         } else {
-            const carritoActualizado = carrito.map ( prod => {
-                if(prod.item.id === item.id) {
-                    return {...prod, cantidad: prod.cantidad + cantidad};
-                } else {
-                    return prod;
-                }
-            });
-            setCarrito(carritoActualizado);
-            setCantidadTotal(prev => prev + cantidad);
-            setTotal(prev => (item.precio * cantidad));
+            alert("existe el prod")
+            return;
         }
     }
 
@@ -54,8 +44,8 @@ export const CarritoProvider = ({children}) => {
         const productoEliminado = carrito.find( prod => prod.item.id === id);
         const carritoActualizado = carrito.filter(prod => prod.item.id !== id); 
         setCarrito(carritoActualizado);
-        setCantidadTotal(prev => prev - productoEliminado.cantidad);
-        setTotal(prev => prev - (productoEliminado.item.precio * productoEliminado.cantidad));
+        setCantidadTotal(prev => prev - 1);
+        setTotal(prev => prev - (productoEliminado.item.price * productoEliminado.quantity));
     }
 
     //Función para vaciar el carrito de compras: 

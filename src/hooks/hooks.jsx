@@ -1,0 +1,1 @@
+export const sentenceToPascalCase = (sentence) => sentence.replace(/\b\w/g, l => l.toUpperCase())

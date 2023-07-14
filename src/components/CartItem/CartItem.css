@@ -1,0 +1,46 @@
+.item {
+    display: flex;
+    justify-content: space-around;
+    border: 1px black solid;
+    border-radius: 10px;
+    position: relative;
+    margin-bottom: 20px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    height: 155px;
+}
+
+.itemDetail{
+    width: 200px;
+    height: auto;
+}
+.itemDetail button {
+    margin-bottom: 10px;
+}
+.itemDetail p {
+    margin-bottom: 10px;
+}
+.itemDetail h4 {
+    margin-bottom: 10px;
+}
+
+.imgSection {
+    width: 150px;
+    height: auto;
+    position: relative;
+}
+.imgSection img {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+}
+
+
+.eliminateIcon {
+    position: absolute;
+    top: -12px;
+    right: -11.5px;
+}

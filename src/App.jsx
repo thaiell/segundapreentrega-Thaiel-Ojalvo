@@ -3,14 +3,14 @@ import ItemListContainer from "./components/ItemListContainer/ItemListContainer"
 import ItemDetailContainer from "./components/ItemDetailContainer/ItemDetailContainer"
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import Cart from "./components/Cart/Cart"
-import { CarritoContext } from "./context/CarritoContext"
+import { CarritoProvider } from "./context/CarritoContext"
 
 function App() {
 
 
   return (
     <>
-<CarritoContext>
+<CarritoProvider>
       <BrowserRouter>
         <NavBar />
 
@@ -22,7 +22,7 @@ function App() {
           <Route path="/checkout" element={<h2>muy pronto</h2>}></Route>
        </Routes> 
       </BrowserRouter>
-     </CarritoContext>
+     </CarritoProvider>
     </>
   )
 }

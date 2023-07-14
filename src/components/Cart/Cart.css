@@ -1,0 +1,28 @@
+.emptyCartContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 70vh;
+}
+
+.emptyCartContainer h3,
+.emptyCartContainer p,
+.emptyCartContainer Button {
+    text-align: center;
+}
+
+/* itemsCartContainer */
+.itemsCartContainer {
+    margin-top: 4.5rem;
+}
+
+
+
+
+
+/* CART FOOTER */
+
+.cartFooter {
+    height: 120px;
+}

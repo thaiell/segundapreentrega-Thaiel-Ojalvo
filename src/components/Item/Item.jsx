@@ -1,8 +1,10 @@
 import { Link } from "react-router-dom"
 import Card from 'react-bootstrap/Card'
 import { Col } from "react-bootstrap"
+import { sentenceToPascalCase } from "../../hooks/hooks"
 
 const Item = ({ id, name, price, img }) => {
+name = sentenceToPascalCase(name)
   return (
     <>
       <Col key={id} className="d-flex justify-content-center">

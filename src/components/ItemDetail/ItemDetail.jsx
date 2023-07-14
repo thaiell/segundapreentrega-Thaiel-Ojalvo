@@ -2,13 +2,15 @@ import './ItemDetail.css'
 import { Button } from "react-bootstrap"
 import { Link } from 'react-router-dom'
 import { CarritoContext } from '../../context/CarritoContext'
-import { useState } from 'react'
-import { useContext } from 'react'
+import { useState, useContext } from 'react'
+import { sentenceToPascalCase } from '../../hooks/hooks'
+
 
 const ItemDetail = ({ id, name, price, img }) => {
+
+
   const {agregarProducto}  = useContext(CarritoContext);
   const [quantity, setQuantity]  = useState(1);
-
 
 
 const lessProduct = () => {
@@ -22,7 +24,7 @@ const moreProduct = () => {
   }
   }
 
-
+  const formattedName = sentenceToPascalCase(name);
   return (
 
     <div className='productDetail container d-flex'>
@@ -30,9 +32,9 @@ const moreProduct = () => {
         <img className='imgProducto' src={img} alt={name} />
       </div>
       <div className='detailSection'>
-        <h2>{name}</h2>
+        <h2>{formattedName}</h2>
         <h3>${price}</h3>
-        <p>{id}</p>
+        <p>ID: {id}</p>
         <div className='counterContainer'>
           <span>  
             <Button onClick={() => lessProduct()}>-</Button>
@@ -44,7 +46,7 @@ const moreProduct = () => {
 
 
        
-        <Button onClick={() => agregarProducto({ id, name, price}, quantity)} className='buttonDetail'>Agregar Al Carrito</Button>
+        <Button onClick={() => agregarProducto({ id, name, price, img}, quantity)} className='buttonDetail'>Agregar Al Carrito</Button>
           <Button className='buttonDetail'><Link to="/checkout"> Comprar </Link></Button>
         </div>
       </div>

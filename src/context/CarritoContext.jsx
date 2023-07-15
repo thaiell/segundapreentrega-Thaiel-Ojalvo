@@ -1,7 +1,8 @@
 //1) Voy a importar el hook useState y createContext que me permite crear un contexto que va a almacenar toda la lógica de mi carrillo de compras. 
 
 import { useState, createContext } from "react";
-
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 //2) Creamos el nuevo contexto. 
 
 export const CarritoContext = createContext({
@@ -23,17 +24,19 @@ export const CarritoProvider = ({children}) => {
     //5) Agregamos algunos métodos al proveedor de contexto para manipular el carrito de compras: 
 
     //Función agregar al carrito: 
-
     const agregarProducto = (item, quantity) => {
         const productoExistente = carrito.find(prod => prod.item.id === item.id);
 
         if(!productoExistente) {
             setCarrito(prev => [...prev, {item, quantity}]);
             //La sintaxis: prev => [...prev, {item, cantidad}] la uso para crear un nuevo array a partir del estado anterior del carrito (prev) y agregar un nuevo objeto que representa el nuevo producto. 
-            setCantidadTotal(prev => prev + 1);
+            setCantidadTotal(prev => prev + quantity);
             setTotal(prev => prev + (item.price * quantity));
         } else {
-            alert("existe el prod")
+            toast.error("El producto seleccionado ya se encuentra en el carrito", {
+                autoClose: 2000
+            })
+            
             return;
         }
     }
@@ -44,7 +47,7 @@ export const CarritoProvider = ({children}) => {
         const productoEliminado = carrito.find( prod => prod.item.id === id);
         const carritoActualizado = carrito.filter(prod => prod.item.id !== id); 
         setCarrito(carritoActualizado);
-        setCantidadTotal(prev => prev - 1);
+        setCantidadTotal(prev => prev - prev.quantity);
         setTotal(prev => prev - (productoEliminado.item.price * productoEliminado.quantity));
     }
 

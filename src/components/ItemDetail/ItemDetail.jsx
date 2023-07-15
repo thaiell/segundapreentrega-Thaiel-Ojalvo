@@ -8,7 +8,6 @@ import { sentenceToPascalCase } from '../../hooks/hooks'
 
 const ItemDetail = ({ id, name, price, img }) => {
 
-
   const {agregarProducto}  = useContext(CarritoContext);
   const [quantity, setQuantity]  = useState(1);
 
@@ -16,15 +15,16 @@ const ItemDetail = ({ id, name, price, img }) => {
 const lessProduct = () => {
   if(quantity > 1) {
     setQuantity(quantity - 1)
-  }
+ }
 }
 const moreProduct = () => {
   if(quantity < 100) {// = stock
     setQuantity(quantity + 1)  
-  }
-  }
+ }
+}
 
-  const formattedName = sentenceToPascalCase(name);
+  name ? name = sentenceToPascalCase(name) : name;
+
   return (
 
     <div className='productDetail container d-flex'>
@@ -32,7 +32,7 @@ const moreProduct = () => {
         <img className='imgProducto' src={img} alt={name} />
       </div>
       <div className='detailSection'>
-        <h2>{formattedName}</h2>
+        <h2>{name}</h2>
         <h3>${price}</h3>
         <p>ID: {id}</p>
         <div className='counterContainer'>

@@ -4,13 +4,14 @@ import { Link } from 'react-router-dom'
 import './CartWidget.css'
 
 const CartWidget = () => {
-  const { cantidadTotal } = useContext(CarritoContext)
+  const { carrito } = useContext(CarritoContext)
+
   return (
     <div className="cartDiv">
       <span className="cart-icon">
        
        <Link to="/cart">
-          {cantidadTotal > 0 && <span className="cart-badge">{ cantidadTotal }</span>}
+          {carrito.length > 0 && <span className="cart-badge">{ carrito.length }</span>}
         
           <i className="cartWidgetIcon fa-solid fa-cart-shopping"></i>
         </Link>

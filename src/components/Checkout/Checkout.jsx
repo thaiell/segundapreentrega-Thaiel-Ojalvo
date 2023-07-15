@@ -28,15 +28,17 @@ const Checkout = () => {
       setError("Los campos del email no coinciden")
       return;
     }
-
+console.log(carrito.map((prod) => console.log(prod)));
     const order = {
       
       items: carrito.map(product => ({
           id: product.item.id,
           productName: product.item.name,
-          quantity: product.quantity
+          quantity: product.quantity,
+          pricePerProduct: product.item.price
       })),
       total: cantidadTotal,
+      totalPrice: carrito.reduce((acc, current) => acc + (current.item.price * current.quantity), 0),
       userName: name,
       userLastName: lastName,
       userPhone: phone,

@@ -6,12 +6,12 @@ import { Link } from "react-router-dom"
 
 
 
-const CartItem = ({ item, quantity }) => {
+const CartItem = ({ key, item, quantity }) => {
 
     const { eliminarProducto } = useContext(CarritoContext);
 
     return (
-        <div className="item">
+        <div className="item" key={key}>
             <div className="itemDetail">
                 <h4>{item.name}</h4>
                 <p>Cantidad: {quantity}</p>

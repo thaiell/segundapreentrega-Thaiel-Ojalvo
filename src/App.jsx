@@ -12,7 +12,7 @@ function App() {
   return (
     <>
   <CarritoProvider>
-    <ToastContainer/>
+    <ToastContainer pauseOnFocusLoss={false}/>
     <BrowserRouter>
       <NavBar />
         <Routes>

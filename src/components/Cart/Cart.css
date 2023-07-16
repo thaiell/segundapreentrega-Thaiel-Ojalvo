@@ -11,18 +11,3 @@
 .emptyCartContainer Button {
     text-align: center;
 }
-
-/* itemsCartContainer */
-.itemsCartContainer {
-    margin-top: 4.5rem;
-}
-
-
-
-
-
-/* CART FOOTER */
-
-.cartFooter {
-    height: 120px;
-}

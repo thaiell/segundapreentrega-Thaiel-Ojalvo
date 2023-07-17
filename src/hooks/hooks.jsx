@@ -2,7 +2,7 @@ import { toast } from "react-toastify";
 
 export const sentenceToPascalCase = (sentence) => {
    console.log(sentence);
-return sentence.replace(/\b\w/g, l => l.toUpperCase())
+   return sentence.replace(/\b\w/g, l => l.toUpperCase())
 }
 
 export const copyToClipboardByParam = (text) => {

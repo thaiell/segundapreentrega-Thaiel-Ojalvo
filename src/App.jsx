@@ -8,22 +8,21 @@ import { CarritoProvider } from "./context/CarritoContext"
 import { ToastContainer } from "react-toastify"
 function App() {
 
-
   return (
     <>
-  <CarritoProvider>
-    <ToastContainer pauseOnFocusLoss={false}/>
-    <BrowserRouter>
-      <NavBar />
-        <Routes>
-          <Route path="/" element={<ItemListContainer/>}/>
-          <Route path="/category/:idCategory" element={ <ItemListContainer/> }/>
-          <Route path="/item/:idItem" element={ <ItemDetailContainer/> }/>
-          <Route path='/cart' element={<Cart/>}></Route>
-          <Route path="/checkout" element={<Checkout/>}></Route>
-       </Routes> 
-    </BrowserRouter>
-  </CarritoProvider>
+      <CarritoProvider>
+        <ToastContainer pauseOnFocusLoss={false} />
+        <BrowserRouter>
+          <NavBar />
+          <Routes>
+            <Route path="/" element={<ItemListContainer />} />
+            <Route path="/category/:idCategory" element={<ItemListContainer />} />
+            <Route path="/item/:idItem" element={<ItemDetailContainer />} />
+            <Route path='/cart' element={<Cart />}></Route>
+            <Route path="/checkout" element={<Checkout />}></Route>
+          </Routes>
+        </BrowserRouter>
+      </CarritoProvider>
     </>
   )
 }

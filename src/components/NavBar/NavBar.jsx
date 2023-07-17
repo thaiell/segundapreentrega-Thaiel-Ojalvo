@@ -3,8 +3,6 @@ import "./NavBar.css"
 import { Link, NavLink } from "react-router-dom"
 import { Container, Navbar, Nav } from "react-bootstrap"
 
-
-
 const NavBar = () => {
     return (
         <Navbar expand="md">
@@ -19,19 +17,19 @@ const NavBar = () => {
                             PuntoES
                         </span>
                     </Link>
-                    </Navbar.Brand>
-                    
-                    <Nav style={{margin: "auto", padding: "0, 50px"}}>
- 
-<NavLink className="navLink py-4 px-4" to={"/category/uniforms"}> Uniformes </NavLink>
+                </Navbar.Brand>
 
-<NavLink className="navLink py-4 px-4" to={"/category/summer"}> Verano </NavLink>
+                <Nav style={{ margin: "auto", padding: "0, 50px" }}>
 
-<NavLink className="navLink py-4 px-4" to={"/category/winter"}> Invierno </NavLink>
-              
-                    </Nav>
-               
-<CartWidget />
+                    <NavLink className="navLink py-4 px-4" to={"/category/uniforms"}> Uniformes </NavLink>
+
+                    <NavLink className="navLink py-4 px-4" to={"/category/summer"}> Verano </NavLink>
+
+                    <NavLink className="navLink py-4 px-4" to={"/category/winter"}> Invierno </NavLink>
+
+                </Nav>
+
+                <CartWidget />
 
             </Container>
         </Navbar>

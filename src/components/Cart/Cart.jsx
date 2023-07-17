@@ -6,7 +6,6 @@ import { Button } from 'react-bootstrap'
 import "./Cart.css"
 import { Navbar, Container } from "react-bootstrap";
 
-
 const Cart = () => {
     const { carrito, vaciarCarrito, total, cantidadTotal } = useContext(CarritoContext)
 
@@ -21,10 +20,10 @@ const Cart = () => {
     }
     return (
         <>
-            <Container className='itemsCartContainer' style={{marginTop:"4.5rem"}}>
+            <Container className='itemsCartContainer' style={{ marginTop: "4.5rem" }}>
                 {carrito.map(product => <CartItem key={product.id} {...product} />)}
             </Container>
-            <Navbar className='cartFooter' bg="light" variant='light' fixed='bottom' style={{height:"120px"}}>
+            <Navbar className='cartFooter' bg="light" variant='light' fixed='bottom' style={{ height: "120px" }}>
                 <Container className='cartFooterContainer'>
                     <h3>Total: ${total} </h3>
                     <h3>Cantidad Total: {cantidadTotal}</h3>

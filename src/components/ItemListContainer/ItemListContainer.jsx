@@ -8,19 +8,18 @@ const ItemListContainer = () => {
     const [products, setProducts] = useState([]);
     const { idCategory } = useParams();
 
-useEffect(() => {
-    const dbProducts = idCategory ? query(collection(db, "products"), where("idCategory", "==", idCategory)) : collection(db, "products")
-    getDocs(dbProducts)
-        .then( res => {
-            const newProducts = res.docs.map( doc => {
-                const data = doc.data();
-                return {id: doc.id, ...data}
+    useEffect(() => {
+        const dbProducts = idCategory ? query(collection(db, "products"), where("idCategory", "==", idCategory)) : collection(db, "products")
+        getDocs(dbProducts)
+            .then(res => {
+                const newProducts = res.docs.map(doc => {
+                    const data = doc.data();
+                    return { id: doc.id, ...data }
+                })
+                setProducts(newProducts)
             })
-            setProducts(newProducts)
-        })
-        .catch(error => console.log(error))
-}, [idCategory])
-
+            .catch(error => console.log(error))
+    }, [idCategory])
 
     return (
         <>

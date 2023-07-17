@@ -1,9 +1,6 @@
-//1) Voy a importar el hook useState y createContext que me permite crear un contexto que va a almacenar toda la lógica de mi carrillo de compras. 
-
 import { useState, createContext } from "react";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-//2) Creamos el nuevo contexto. 
 
 export const CarritoContext = createContext({
     carrito: [],
@@ -11,47 +8,34 @@ export const CarritoContext = createContext({
     cantidadTodal: 0
 })
 
-//3) Creamos un componente llamado "CarritoProvider". 
-//También lo pueden encontrar como "proveedor de contextos". 
-
-export const CarritoProvider = ({children}) => {
-    //4) Creamos un estado local "carrito, total y cantidad total" con el hook useState.
+export const CarritoProvider = ({ children }) => {
     const [carrito, setCarrito] = useState([]);
     const [total, setTotal] = useState(0);
     const [cantidadTotal, setCantidadTotal] = useState(0);
-    //No se olviden de esto: verifiquen el carrito por consola. 
 
-    //5) Agregamos algunos métodos al proveedor de contexto para manipular el carrito de compras: 
-
-    //Función agregar al carrito: 
     const agregarProducto = (item, quantity) => {
         const productoExistente = carrito.find(prod => prod.item.id === item.id);
 
-        if(!productoExistente) {
-            setCarrito(prev => [...prev, {item, quantity}]);
-            //La sintaxis: prev => [...prev, {item, cantidad}] la uso para crear un nuevo array a partir del estado anterior del carrito (prev) y agregar un nuevo objeto que representa el nuevo producto. 
+        if (!productoExistente) {
+            setCarrito(prev => [...prev, { item, quantity }]);
             setCantidadTotal(prev => prev + quantity);
             setTotal(prev => prev + (item.price * quantity));
         } else {
             toast.error("El producto seleccionado ya se encuentra en el carrito", {
                 autoClose: 2000
             })
-            
+
             return;
         }
     }
 
-    //Función para eliminar productos del carrito: 
-
     const eliminarProducto = (id) => {
-        const productoEliminado = carrito.find( prod => prod.item.id === id);
-        const carritoActualizado = carrito.filter(prod => prod.item.id !== id); 
+        const productoEliminado = carrito.find(prod => prod.item.id === id);
+        const carritoActualizado = carrito.filter(prod => prod.item.id !== id);
         setCarrito(carritoActualizado);
         setCantidadTotal(prev => prev - prev.quantity);
         setTotal(prev => prev - (productoEliminado.item.price * productoEliminado.quantity));
     }
-
-    //Función para vaciar el carrito de compras: 
 
     const vaciarCarrito = () => {
         setCarrito([]);
@@ -59,14 +43,10 @@ export const CarritoProvider = ({children}) => {
         setTotal(0);
     }
 
-
-    //6) Usamos el componente CarritoContext.Provider para enviar el valor actual del carrito y los métodos a los componentes de mi aplicación que lo necesiten. 
-
     return (
-        <CarritoContext.Provider value={{carrito, total, cantidadTotal, agregarProducto, eliminarProducto, vaciarCarrito}}>
+        <CarritoContext.Provider value={{ carrito, total, cantidadTotal, agregarProducto, eliminarProducto, vaciarCarrito }}>
             {children}
         </CarritoContext.Provider>
     )
 }
 
-//7) Children: propiedad especial que se utiliza para representar a todos aquellos componentes que pueden necesitar el carrito y sus métodos. 

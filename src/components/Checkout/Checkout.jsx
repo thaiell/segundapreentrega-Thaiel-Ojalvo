@@ -4,7 +4,6 @@ import { db } from "../../services/config"
 import { CarritoContext } from "../../context/CarritoContext"
 import "./Checkout.css"
 import CartItem from "../CartItem/CartItem"
-import Button from "react-bootstrap/button"
 import { Container } from "react-bootstrap"
 import { copyToClipboardByParam } from "../../hooks/hooks"
 import { Link } from "react-router-dom"
@@ -20,7 +19,7 @@ const Checkout = () => {
   const [error, setError] = useState("");
   const [orderID, setOrderID] = useState("");
 
-  
+
   const handlerForm = (e) => {
     e.preventDefault();
     if (carrito.length < 1) {
@@ -88,11 +87,9 @@ const Checkout = () => {
 
   }
 
-
   return (
     <>
-
-      <form onSubmit={handlerForm} style={{marginTop:"3rem"}}>
+      <form onSubmit={handlerForm} style={{ marginTop: "3rem" }}>
         <label htmlFor="name">Name</label>
 
         <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
@@ -111,7 +108,6 @@ const Checkout = () => {
 
         {error && <p style={{ color: "red" }}> {error} </p>}
 
-
         <button type="submit">Submit</button>
       </form>
       {
@@ -119,7 +115,7 @@ const Checkout = () => {
           <strong>Gracias por comprar, tu orden de compra es {<button style={{ textDecoration: "underline", border: 0, backgroundColor: "inherit" }} onClick={() => copyToClipboardByParam(orderID)}>{orderID}<i style={{ marginLeft: "10px" }} className="fa-regular fa-clipboard"></i></button>}</strong>
         )
       }
-<h1>Precio total: ${total}</h1> 
+      <h1>Precio total: ${total}</h1>
       <Container style={{ marginTop: "4.5rem" }}>
         {carrito.map(product => <CartItem key={product.id} {...product} />)}
       </Container>

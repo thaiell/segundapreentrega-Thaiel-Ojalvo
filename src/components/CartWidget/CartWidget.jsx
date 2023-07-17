@@ -9,10 +9,10 @@ const CartWidget = () => {
   return (
     <div className="cartDiv">
       <span className="cart-icon">
-       
-       <Link to="/cart">
-          {carrito.length > 0 && <span className="cart-badge">{ carrito.length }</span>}
-        
+
+        <Link to="/cart">
+          {carrito.length > 0 && <span className="cart-badge">{carrito.length}</span>}
+
           <i className="cartWidgetIcon fa-solid fa-cart-shopping"></i>
         </Link>
       </span>

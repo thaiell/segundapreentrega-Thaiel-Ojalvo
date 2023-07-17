@@ -10,7 +10,7 @@ import { copyToClipboardByParam } from "../../hooks/hooks"
 import { Link } from "react-router-dom"
 
 const Checkout = () => {
-  const { carrito, vaciarCarrito, cantidadTotal } = useContext(CarritoContext);
+  const { carrito, vaciarCarrito, cantidadTotal, total } = useContext(CarritoContext);
 
   const [name, setName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -20,7 +20,7 @@ const Checkout = () => {
   const [error, setError] = useState("");
   const [orderID, setOrderID] = useState("");
 
-
+  
   const handlerForm = (e) => {
     e.preventDefault();
     if (carrito.length < 1) {
@@ -119,6 +119,7 @@ const Checkout = () => {
           <strong>Gracias por comprar, tu orden de compra es {<button style={{ textDecoration: "underline", border: 0, backgroundColor: "inherit" }} onClick={() => copyToClipboardByParam(orderID)}>{orderID}<i style={{ marginLeft: "10px" }} className="fa-regular fa-clipboard"></i></button>}</strong>
         )
       }
+<h1>Precio total: ${total}</h1> 
       <Container style={{ marginTop: "4.5rem" }}>
         {carrito.map(product => <CartItem key={product.id} {...product} />)}
       </Container>

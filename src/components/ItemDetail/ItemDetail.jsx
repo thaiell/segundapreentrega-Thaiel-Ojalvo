@@ -6,7 +6,7 @@ import { useState, useContext } from 'react'
 import { sentenceToPascalCase } from '../../hooks/hooks'
 
 
-const ItemDetail = ({ id, name, price, img }) => {
+const ItemDetail = ({ id, name, price, img, description }) => {
 
   const {agregarProducto}  = useContext(CarritoContext);
   const [quantity, setQuantity]  = useState(1);
@@ -26,7 +26,7 @@ const moreProduct = () => {
   name ? name = sentenceToPascalCase(name) : name;
 
   return (
-
+<>
     <div className='productDetail container d-flex'>
       <div className="IMG">
         <img className='imgProducto' src={img} alt={name} />
@@ -42,16 +42,16 @@ const moreProduct = () => {
             <Button onClick={() => moreProduct()}>+</Button>
           </span>
         </div>
-        <div className="buttonContainer">
 
-
-       
+        <div className="buttonContainer">       
         <Button onClick={() => agregarProducto({ id, name, price, img}, quantity)} className='buttonDetail'>Agregar Al Carrito</Button>
           <Button className='buttonDetail'><Link to="/checkout"> Comprar </Link></Button>
         </div>
       </div>
     </div>
-
+    <div style={{textAlign:"center", marginTop:"50px"}}>Descripcion</div>
+    <p style={{textAlign:"center", margin:"0 200px"}}>{description}</p>
+</>
   )
 }
 
